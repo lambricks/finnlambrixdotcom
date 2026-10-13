@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Finn Lambrix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="mainStyle.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="media/saturn_logo.png">
+
+  <style>
+    html, body {
+      overflow-x: hidden; 
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1.thick {
+      font-weight: bold;
+    } 
+
+.image-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black; 
+  text-align: center;
+}
+
+.left-text-about {
+  width: 50%;                
+  margin-right: auto;     
+  margin-left: 60px;     
+  text-align: left;    
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content {
+padding-top: 1px;
+padding-bottom: 20px;
+}
+
+.tabbedOver {
+  padding-left: 50px;
+}
+
+.sideBySide {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  height: 500px;
+}
+
+.sideBySide p {
+  margin-top: 60px;
+  margin-left: -150px;
+}
+
+.tabOver2 {
+  margin-left: 50px;
+}
+
+.allYourDucksInaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 30px;
+  box-sizing: border-box;
+  
+}
+
+.list {
+  margin: 0;
+  background: rgb(202, 196, 196);
+  padding: 30px;
+  border-radius: 18px;
+  width: 260px;
+  flex: 1 1 260px;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-right: 4px solid rgb(66, 65, 65);
+  border-bottom: 4px solid rgb(66, 65, 65);
+}
+
+.list :not(h3):not(ul) {
+  transition: transform 0.15s ease-in-out;
+}
+
+.list :hover:not(h3):not(ul) {
+  transform: scale(1.05);
+}
+
+#collage {
+  position: relative;
+  transform: scale(0.4);
+  transform-origin: top left;
+  opacity: 1;
+  max-width: 100%;
+  margin-left: 55%;
+  margin-top: -300px;
+}
+
+#contentBottom {
+  margin-top: -500px;
+}
+  </style>
+</head>
+
+<body style="font-family: 'Libre Franklin', sans-serif;">
+
+  <div id="uberbar">
+    <img src="media/saturn_logo.png" alt="logo">
+    <a href="index.html" style="color: black">Home</a>
+    <a href="portfolio.html" style="color: black">Portfolio</a>
+    <a href="x.html" style="color: black">x</a>
+    <a href="x.html" style="color: black">x</a>
+  </div>
+
+  <div class="image-container">
+    <img src="media/placeholder_background.png" alt="Logo">
+    <div id="banner-gradient"></div>
+
+    <div class="overlay-text">
+      <h1>Finn Lambrix</h1>
+      <br>
+      <hr> 
+      <br>
+      <p>
+        Hey there, I'm Finn. I make tecnicial projects ranging from simulations and games to complex 3d designs and hardware experiments. 
+        I made this website to showcase all the projects I've created while exploring my interests!
+      </p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div id="footer-gradient"></div> 
+
+<div class="sideBySide">
+      <h1 class="tabbedOver">About Me</h1>
+      <p class="left-text-about">
+
+          I am a self taught engineer and programmer with an interest in building things that combine software, hardware, and 3D design. Over the past few years, I've spent a lot of time experimenting with different creative tools. I have taught myself programming languages like C++, HTML/JavaScript/CSS, and Fortran, as well as CAD software like Autodesk Fusion 360 and AutoCAD .
+          <br><br>
+          Many of my early projects started as things I made when I was bored, but I evolved to really love them, so I continued them until they turned into something great. My best ideas came from a quick doodle, thoughtless sketch in CAD, or a random thought that never stopped growing and having more elements added onto them. 
+          <br><br>
+          Throughout these projects, I have developed many skills like problem solving, digital and physical design in all forms, and learning new tools independently. Over time, my interests expanded and I combined all of them into bigger projects, with 3D printed components, interactive software, and custom hardware.
+      </p>
+      <img id="collage" src="media/aboutcollage3.png" alt="Portfolio, Photo">
+
+</div>
+         <h1 class="tabOver2">Skills</h1>
+       <div class="allYourDucksInaRow">
+       <div class="list">
+          <h3>Programming</h3>
+            <ul>
+              <li>C++ (Robotics)</li>
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>HTML / CSS</li>
+              <li>Fortran 95</li>
+            </ul> 
+          </div>
+            <div class="list">
+          <h3>3D Modeling</h3>
+<ul>
+              <li>Autodesk Fusion 360</li>
+              <li>Mechanical modeling</li>
+              <li>Designing parts for 3D printing</li>
+              <li>Rendered final products</li>
+              <li>Automotive design</li>
+            </ul> 
+          </div>
+<div class="list">
+          <h3>Graphic Design</h3>
+        <ul>
+              <li>Adobe Photoshop</li>
+              <li>Vehicle livery design</li>
+              <li>Poster and graphic layout design</li>
+            </ul> 
+          </div>
+            <div class="list">
+          <h3>Web Development</h3>
+        <ul>
+              <li>HTML / CSS / JavaScript</li>
+              <li>Interactive UI elements</li>
+              <li>Browser based simulations</li>
+            </ul> 
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+</body>
+</html>
