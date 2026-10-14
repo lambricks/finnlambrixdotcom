@@ -1,205 +1,251 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Finn Lambrix</title>
+  <title>Finn Lambrix | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="mainStyle.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="media/saturn_logo.png">
-
-  <style>
+  <link rel="stylesheet" href="clockStyle.css">
+ <style>
     html, body {
-      overflow-x: hidden; 
+      overflow-x: hidden;
       max-width: 100%;
       margin: 0;
       padding: 0;
     }
 
-    h1.thick {
-      font-weight: bold;
-    } 
+    body {
+      font-family: 'Libre Franklin', sans-serif;
+    }
 
-.image-container {
-  width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-}
-.image-container img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black; 
-  text-align: center;
-}
+    .image-container {
+      width: 100%;
+      height: auto;
+      position: relative;
+      overflow: hidden;
+    }
 
-.left-text-about {
-  width: 50%;                
-  margin-right: auto;     
-  margin-left: 60px;     
-  text-align: left;    
-  padding: 20px;
-  box-sizing: border-box;
-}
+    .image-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
 
-.content {
-padding-top: 1px;
-padding-bottom: 20px;
-}
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: black;
+      text-align: center;
+    }
 
-.tabbedOver {
-  padding-left: 50px;
-}
+    .bigBox {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto 30px;
+      padding: 30px;
+      background: rgb(202, 196, 196);
+      border-right: 4px solid rgb(66, 65, 65);
+      border-bottom: 4px solid rgb(66, 65, 65);
+      border-radius: 18px;
+      transition: background-color 0.3s ease;
+    }
 
-.sideBySide {
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  height: 500px;
-}
+    .bigBox:hover {
+      background-color: #e5e5e5;
+    }
 
-.sideBySide p {
-  margin-top: 60px;
-  margin-left: -150px;
-}
+    .bigBox h1 {
+      margin-bottom: 12px;
+      font-size: 24px;
+    }
 
-.tabOver2 {
-  margin-left: 50px;
-}
+    .bigBox .dropdown-box {
+      display: grid;
+      grid-template-rows: 0fr;
+      position: relative;
+      visibility: hidden;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0;
+      transition: grid-template-rows 0.3s ease, opacity 0.2s ease, padding 0.3s ease, visibility 0s linear 0.3s;
+    }
 
-.allYourDucksInaRow {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  padding: 0 30px;
-  box-sizing: border-box;
-  
-}
+    .bigBox .dropdown-box > .left-content {
+      min-height: 0;
+      overflow: hidden;
+    }
 
-.list {
-  margin: 0;
-  background: rgb(202, 196, 196);
-  padding: 30px;
-  border-radius: 18px;
-  width: 260px;
-  flex: 1 1 260px;
-  max-width: 100%;
-  box-sizing: border-box;
-  border-right: 4px solid rgb(66, 65, 65);
-  border-bottom: 4px solid rgb(66, 65, 65);
-}
+    .bigBox .dropdown-toggle:checked + .not-selectable + .dropdown-box {
+      grid-template-rows: 1fr;
+      visibility: visible;
+      opacity: 1;
+      padding: 16px 0 0;
+      transition: grid-template-rows 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
+    }
 
-.list :not(h3):not(ul) {
-  transition: transform 0.15s ease-in-out;
-}
+    .dropdown-toggle:not(:checked) ~ label .label-expanded {
+      display: none;
+    }
 
-.list :hover:not(h3):not(ul) {
-  transform: scale(1.05);
-}
+    .dropdown-toggle:checked ~ label .label-collapsed {
+      display: none;
+    }
 
-#collage {
-  position: relative;
-  transform: scale(0.4);
-  transform-origin: top left;
-  opacity: 1;
-  max-width: 100%;
-  margin-left: 55%;
-  margin-top: -300px;
-}
+    .dropdown-toggle:checked ~ label .label-expanded {
+      display: inline;
+    }
 
-#contentBottom {
-  margin-top: -500px;
-}
+    #clockFontDiv {
+      position: relative;
+      width: 250%;
+      height: 220px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      transform: scale(0.4);
+      transform-origin: top left;
+    }
+
+    .previewImg {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      width: 140px;
+      height: auto;
+      border-radius: 4px;
+    }
   </style>
 </head>
-
-<body style="font-family: 'Libre Franklin', sans-serif;">
-
-  <div id="uberbar">
+<body>
+<div id="uberbar">
     <img src="media/saturn_logo.png" alt="logo">
     <a href="index.html" style="color: black">Home</a>
     <a href="portfolio.html" style="color: black">Portfolio</a>
     <a href="x.html" style="color: black">x</a>
     <a href="x.html" style="color: black">x</a>
   </div>
-
+       
   <div class="image-container">
-    <img src="media/placeholder_background.png" alt="Logo">
+    <img src="media/workbackground.png" alt="Work experience banner">
     <div id="banner-gradient"></div>
 
     <div class="overlay-text">
       <h1>Portfolio</h1>
-
     </div>
   </div>
-
   <div class="content">
-    <div id="footer-gradient"></div> 
+    <div id="footer-gradient"></div>
+    
+    <!--
+    rank @ <a href="url"  target="_blank">name | num Members</a>
+    -->
 
-<div class="sideBySide">
-      <h1 class="tabbedOver">About Me</h1>
-      <p class="left-text-about">
 
-          I am a self taught engineer and programmer with an interest in building things that combine software, hardware, and 3D design. Over the past few years, I've spent a lot of time experimenting with different creative tools. I have taught myself programming languages like C++, HTML/JavaScript/CSS, and Fortran, as well as CAD software like Autodesk Fusion 360 and AutoCAD .
-          <br><br>
-          Many of my early projects started as things I made when I was bored, but I evolved to really love them, so I continued them until they turned into something great. My best ideas came from a quick doodle, thoughtless sketch in CAD, or a random thought that never stopped growing and having more elements added onto them. 
-          <br><br>
-          Throughout these projects, I have developed many skills like problem solving, digital and physical design in all forms, and learning new tools independently. Over time, my interests expanded and I combined all of them into bigger projects, with 3D printed components, interactive software, and custom hardware.
-      </p>
-      <img id="collage" src="media/aboutcollage3.png" alt="Portfolio, Photo">
+
+
+
+  <div class="bigBox" id="project1BigBox">
+    <h1>Template | Project 1 Name</h1>
+    <img class="previewImg" src="./media/audi1.png">
+    <input type="checkbox" id="project1" class="dropdown-toggle" />
+    <label for="project1" class="not-selectable" style="cursor: pointer;">
+      <span onclick="makeWord('the clock');" class="label-collapsed">▼ Click to expand</span>
+      <span onclick="removeAllTabs();" class="label-expanded">▲ Click to collapse</span>
+    </label>
+
+  <div class="dropdown-box">
+   
+    <div class="left-content">
+      <div id="clockFontDiv"></div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+  </div>
+</div> <!--project ending-->
+
+
+
+
+
+<div class="bigBox" id="project2BigBox">
+    <h1>Template | Project 2 Name</h1>
+    <input type="checkbox" id="project2" class="dropdown-toggle" />
+    <label for="project2" class="not-selectable" style="cursor: pointer;">
+      <span class="label-collapsed">▼ Click to expand</span>
+      <span class="label-expanded">▲ Click to collapse</span>
+    </label>
+
+  <div class="dropdown-box">
+    <div class="left-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      
+    </div>
+  </div>
+</div> <!--project ending-->
+
+
+
+
+
+    </div> <!--content-->
+
+  </div>
+
+
+
+
 
 </div>
-         <h1 class="tabOver2">Skills</h1>
-       <div class="allYourDucksInaRow">
-       <div class="list">
-          <h3>Programming</h3>
-            <ul>
-              <li>C++ (Robotics)</li>
-              <li>Java</li>
-              <li>JavaScript</li>
-              <li>HTML / CSS</li>
-              <li>Fortran 95</li>
-            </ul> 
-          </div>
-            <div class="list">
-          <h3>3D Modeling</h3>
-<ul>
-              <li>Autodesk Fusion 360</li>
-              <li>Mechanical modeling</li>
-              <li>Designing parts for 3D printing</li>
-              <li>Rendered final products</li>
-              <li>Automotive design</li>
-            </ul> 
-          </div>
-<div class="list">
-          <h3>Graphic Design</h3>
-        <ul>
-              <li>Adobe Photoshop</li>
-              <li>Vehicle livery design</li>
-              <li>Poster and graphic layout design</li>
-            </ul> 
-          </div>
-            <div class="list">
-          <h3>Web Development</h3>
-        <ul>
-              <li>HTML / CSS / JavaScript</li>
-              <li>Interactive UI elements</li>
-              <li>Browser based simulations</li>
-            </ul> 
 
-          </div>
-      </div>
-    </div>
-  </div>
 
- 
+
+ <script src="clockScript.js"></script>
+
+
 
 </body>
 </html>
+<!--
+
+projects to add:
+  electrical
+    clock
+    radio in a box (small)
+    heavy rescue lightbar
+
+  3d design
+    cars (one tab?)
+      saturn shitbox
+      bls/heavy rescue
+      volvos
+      saturn shuttle
+    deepwater horizon
+    trains
+    boats (one tab?)
+      arleigh burke
+      maersk
+    reverse engineered parts?
+      headlight bracket
+      ashtray for car
+    
+    design
+      posters
+        heavy rescue
+        volvo
+        arleigh burke
+        shitbox
+
+    coding  
+      sOS
+      encryption/decrypton
+      lifepak
+      health bar system for wab
+      ELS creator
+      bls simulator
+
+
+
+-->
