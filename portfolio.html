@@ -114,6 +114,8 @@
       transform-origin: top left;
       margin-left: -10%;
       overflow: hidden;
+      margin-top: 60px;
+      transition: 0.2s ease;
     }
 
     .previewImgDiv {
@@ -126,6 +128,15 @@
       border-radius: 4px;
     }
 
+
+    #tooltip {
+
+      width: 100%;
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 20px;
+
+    }
     .previewImg {
       position: absolute;
       top: 25px;
@@ -164,6 +175,71 @@
     #prevBtn {
       left: 10px;
     }
+
+    .progressTag {
+      width: 120px;
+      height: 30px;
+      border-radius: 20px;
+      position: absolute;
+      left: 180px;
+      top: 64px;
+      transition: width 0.3s ease;
+    }
+
+    .bigBox:has(.dropdown-toggle:checked) .progressTag {
+      width: 400px;
+      height: 60px;
+      left: 50px;
+      top: 100px;
+    }
+
+    .bigBox:has(.dropdown-toggle:checked) .tagText {
+     padding-left: 4px;
+     padding-top: 2px;
+     
+    }
+
+    .tagCircle {
+      width: 22px;
+      height: 22px;
+      border-radius: 20px;
+      background: white;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      transition: transform 0.3s ease, top 0.3s ease, border-radius 0.3s ease, clip-path 0.3s ease;
+    }
+
+    .progressTag:hover .tagCircle {
+      /*clip-path: polygon(0 39%, 100% 39%, 100% 75%, 75% 75%, 50% 100%, 20% 75%, 0% 75%);
+      */transform: scale(5);
+      top: -50px;
+    }
+
+    .progressTag[data-status="finished"] {
+      background-color: #288d52;
+    }
+
+  .progressTag[data-status="inProgress"] {
+     background-color: #9b2518;
+  }   
+
+
+  .progressTag[data-status="editing"] {
+     background-color: #6663a1;
+  }   
+
+  
+
+  .tagText {
+      display: block;
+      text-align: center;
+      line-height: 30px;
+      font-size: 14px;
+      transition: 0.2s ease;
+  }
+
+
   </style>
 </head>
 <body>
@@ -189,7 +265,7 @@
     <!--
     rank @ <a href="url"  target="_blank">name | num Members</a>
     -->
-
+<p id="tooltip">(Expand the boxes to view information, more pictures, and view the status of the project)</p>
 
 
 
@@ -197,21 +273,25 @@
   <div class="bigBox" id="project1BigBox">
     <h1>Template | Project 1 Name</h1>
     <div class="previewImgDiv">
-    <img class="previewImg" src="./media/audi1.png">
+    <img class="previewImg" src="./media/clock/clock_1.png">
       <button id="prevBtn" onclick="prevImage();"><</button>
       <button id="nextBtn" onclick="nextImage();">></button>
+    </div>
+    <div class="progressTag" data-status="editing">
+      <span class="tagText"></span>
     </div>
     <input type="checkbox" id="project1" class="dropdown-toggle" />
     <label for="project1" class="not-selectable" style="cursor: pointer;">
       <span onclick="makeWord('the clock');" class="label-collapsed">▼ Click to expand</span>
       <span onclick="removeAllTabs();" class="label-expanded">▲ Click to collapse</span>
     </label>
+    
 
   <div class="dropdown-box">
    
     <div class="left-content">
       <div id="clockFontDiv"></div>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <p style="margin-top: -100px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
   </div>
 </div> <!--project ending-->
@@ -274,6 +354,37 @@
        dropdown.addEventListener("transitionend", scrollAfterExpand);
      });
    });
+
+
+
+   const statusLabels = {
+    finished: "Finished",
+    inProgress: "In Progress",
+    editing: "Editing"
+   };
+
+   const expandedStatusLabels = {
+     finished: "Finished: This project has been marked as finished, this is its final state for now and will not be added onto!",
+     inProgress: "In Progress: This entry is up to date, but this project is unfinished. Updates will be provided when available!",
+     editing: "Editing: Info (text descriptions and images) are still being added to this entry."
+   };
+
+   document.querySelectorAll(".progressTag").forEach((tag) => {
+     const tagText = tag.querySelector(".tagText");
+     const toggle = tag.closest(".bigBox")?.querySelector(".dropdown-toggle");
+     const label = statusLabels[tag.dataset.status];
+     const expandedLabel = expandedStatusLabels[tag.dataset.status];
+
+     if (!tagText || !label) return;
+
+     const updateTagText = () => {
+       tagText.textContent = toggle?.checked && expandedLabel ? expandedLabel : label;
+     };
+
+     updateTagText();
+     toggle?.addEventListener("change", updateTagText);
+   });
+
  </script>
 
 
